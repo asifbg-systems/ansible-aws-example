@@ -1,0 +1,27 @@
+
+- name: Access some $evm.root variables
+  hosts: all
+  connection: local
+
+  vars:
+  - manageiq_validate_certs: false
+
+  roles:
+  - syncrou.manageiq-automate
+
+  tasks:
+  - name: "Get $evm.root['dialog_vm_name']"
+    manageiq_automate:
+      workspace: "{{ workspace }}"
+      get_attribute:
+        object: "root"
+        attribute: "dialog_vm_name"
+    register: vm_name
+
+  - name: "Save the job ID back into $evm.root"
+    manageiq_automate:
+      workspace: "{{ workspace }}"
+      set_attribute:
+        object: "root"
+        attribute: "tower_job_id"
+        value:  "{{ tower_job_id }}"
