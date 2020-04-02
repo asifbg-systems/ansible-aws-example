@@ -10,18 +10,11 @@
   - syncrou.manageiq-automate
 
   tasks:
-  - name: "Get $evm.root['dialog_vm_name']"
+  - name: "Get $evm.root['dialog_value']"
     manageiq_automate:
       workspace: "{{ workspace }}"
       get_attribute:
         object: "root"
-        attribute: "dialog_vm_name"
+        attribute: "dialog_value"
     register: vm_name
-
-  - name: "Save the job ID back into $evm.root"
-    manageiq_automate:
-      workspace: "{{ workspace }}"
-      set_attribute:
-        object: "root"
-        attribute: "tower_job_id"
-        value:  "{{ tower_job_id }}"
+- debug: var=dialog_value
