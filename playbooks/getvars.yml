@@ -15,13 +15,6 @@
       workspace: "{{ workspace }}"
       get_attribute:
         object: "root"
-        attribute: "power_state"
+        attribute: "dialog_value"
     register: vm_name
-
-  - name: "Save the Power State back into $evm.root"
-    manageiq_automate:
-      workspace: "{{ workspace }}"
-      set_attribute:
-        object: "root"
-        attribute: "power_state"
-        value:  false
+  - debug: msg="The key is power_state and the value is {{ dialog_value }}"
