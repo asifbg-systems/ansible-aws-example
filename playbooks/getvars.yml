@@ -17,4 +17,5 @@
         object: "root"
         attribute: "dialog_value"
     register: vm_name
-- debug: var=dialog_value
+- debug: 
+msg: Result = {{ dialog_value }}
