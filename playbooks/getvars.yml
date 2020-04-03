@@ -15,6 +15,6 @@
       workspace: "{{ workspace }}"
       get_attribute:
         object: "root"
-        attribute: "dialog_value"
+        attribute: "servername"
     register: vm_name
-  - debug: msg="The key is power_state and the value is {{ dialog_value }}"
+  - debug: msg="The key is power_state and the value is {{ servername }}"
