@@ -15,16 +15,16 @@
       workspace: "{{ workspace }}"
       get_attribute:
         object: "root"
-        attribute: "servername"
-    register: server_name
+        attribute: "dialog_value"
+    register: dialog_value
 
   - set_fact:
-        instance_id: "{{ server_name }}"
+        instance_id: "{{ dialog_value }}"
 
     - name: Add the PowerOff tag
       ec2_tag:
         region: us-east-1
-        resource: "{{ server_name }}"
+        resource: "{{ dialog_value }}"
         tags:
           PowerOff: false
         state: present
