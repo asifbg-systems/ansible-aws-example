@@ -17,7 +17,7 @@
         object: "root"
         attribute: "servername"
     register: server_name
-
+debug: msg="attribute_list is {{ server_name }}"
   - set_fact:
         instance_id: "{{ server_name }}"
 
