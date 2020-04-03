@@ -1,0 +1,24 @@
+- name: Get attribute names in root object
+hosts: localhost
+connection: local
+vars:
+- manageiq_connection:
+url: 'https://34.69.143.220'
+username: 'admin'
+password: 'Vsi@786#'
+force_basic_auth: 'yes'
+manageiq_validate_certs: 'False'
+automate_workspace: 'automate_workspaces/1'
+roles:
+- syncrou.manageiq-automate
+- syncrou.manageiq-vmdb
+
+- tasks:
+name: "Get root object reference"
+manageiq_automate:
+workspace: "{{ workspace }}"
+get_object_attribute_names:
+object: "root"
+register: attribute_list
+
+debug: msg="attribute_list is {{ attribute_list }}"
