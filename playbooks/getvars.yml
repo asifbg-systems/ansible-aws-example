@@ -16,5 +16,15 @@
       get_attribute:
         object: "root"
         attribute: "servername"
-    register: vm_name
-  - debug: msg="The key is power_state and the value is {{ servername }}"
+    register: server_name
+
+  - set_fact:
+        instance_id: "{{ server_name }}"
+
+    - name: Add the PowerOff tag
+      ec2_tag:
+        region: us-east-1
+        resource: "{{ server_name }}"
+        tags:
+          PowerOff: false
+        state: present
