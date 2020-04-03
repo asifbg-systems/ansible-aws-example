@@ -10,8 +10,9 @@ force_basic_auth: 'yes'
 manageiq_validate_certs: 'False'
 automate_workspace: 'automate_workspaces/1'
 roles:
-- syncrou.manageiq-automate
-- syncrou.manageiq-vmdb
+- manageiq-core.manageiq-automate
+- manageiq-core.manageiq-vmdb
+
 
 - tasks:
 name: "Get root object reference"
